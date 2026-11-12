@@ -1,0 +1,62 @@
+/* Home: hero + roadmap bands around a vertical spine (mirrors the roadmap image). */
+.hero { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 28px; align-items: end; margin: 10px 0 34px; }
+.hero h1 { font-size: clamp(38px, 5.4vw, 64px); font-weight: 700; letter-spacing: -.015em; }
+.hero h1 em { font-style: normal; color: var(--teal); background: linear-gradient(transparent 62%, #1aa3a133 62%); }
+.hero-actions { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 22px; }
+.hero-actions .btn { font-size: 16px; padding: 12px 18px; }
+.hero-progress { font: 500 13px var(--mono); color: var(--muted); }
+.hero-progress b { color: var(--navy); font-size: 16px; }
+.hero-legend { display: flex; flex-direction: column; gap: 6px; background: var(--card); border: 1.5px solid var(--line-soft); border-radius: 16px; padding: 12px; box-shadow: var(--shadow); }
+.hero-legend a { display: flex; align-items: center; gap: 10px; text-decoration: none; padding: 7px 8px; border-radius: 9px; font: 600 15px var(--cond); color: var(--navy); }
+.hero-legend a:hover { background: var(--paper); }
+.hero-legend small { margin-left: auto; font: 500 11px var(--mono); color: var(--muted); }
+
+.roadmap { position: relative; display: flex; flex-direction: column; gap: 26px; padding-bottom: 20px; }
+.roadmap::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 2.5px; background: #8fb0f0; transform: translateX(-50%); }
+.rm-root {
+  position: relative; align-self: center; z-index: 1; background: var(--paper); border: 2.5px solid #8fb0f0; border-radius: 16px;
+  padding: 18px 40px; font: 500 20px var(--mono); color: var(--navy); box-shadow: var(--shadow);
+}
+.rm-band { position: relative; background: var(--tint); border-radius: 22px; padding: 24px 26px 28px; border: 1px solid color-mix(in srgb, var(--accent) 18%, transparent); }
+.rm-band-head { position: relative; z-index: 1; display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
+.rm-band-head h2 { font: 600 24px var(--mono); }
+.rm-band-head p { margin: 0; font: 500 13px var(--mono); color: var(--muted); }
+.rm-band-count { margin-left: auto; font: 600 12px var(--mono); color: var(--accent); background: var(--paper); padding: 3px 10px; border-radius: 20px; border: 1.5px solid color-mix(in srgb, var(--accent) 45%, transparent); }
+.rm-nodes { display: grid; grid-template-columns: 1fr 1fr; column-gap: 64px; row-gap: 18px; }
+.rm-node { position: relative; display: flex; gap: 14px; align-items: flex-start; }
+.rm-left { grid-column: 1; flex-direction: row-reverse; text-align: right; }
+.rm-right { grid-column: 2; }
+.rm-node::before { /* connector to spine */
+  content: ""; position: absolute; top: 21px; height: 2.5px; width: 32px; background: var(--accent);
+}
+.rm-left::before { right: -32px; } .rm-right::before { left: -32px; }
+.rm-node-box {
+  display: inline-block; white-space: nowrap; background: var(--paper); border: 2.5px solid var(--accent); border-radius: 13px;
+  padding: 8px 14px; font: 600 14.5px var(--mono); color: var(--navy); box-shadow: 0 2px 0 color-mix(in srgb, var(--accent) 40%, transparent);
+}
+.rm-node-body { flex: 1; min-width: 0; padding-top: 2px; border-left: 2.5px solid var(--accent); padding-left: 12px; }
+.rm-left .rm-node-body { border-left: 0; padding-left: 0; border-right: 2.5px solid var(--accent); padding-right: 12px; }
+.rm-lessons { display: flex; flex-direction: column; gap: 4px; }
+.rm-left .rm-lessons { align-items: flex-end; }
+.rm-lesson { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font: 500 14px var(--mono); color: var(--navy); padding: 3px 6px; border-radius: 7px; }
+.rm-left .rm-lesson { flex-direction: row-reverse; }
+.rm-lesson:hover { background: var(--paper); text-decoration: underline; text-decoration-color: var(--accent); }
+.rm-check { width: 15px; height: 15px; flex: none; border: 2px solid var(--accent); border-radius: 4px; display: grid; place-items: center; font-size: 10px; color: #fff; }
+.rm-lesson.is-done .rm-check { background: var(--accent); }
+.rm-lesson.is-done { color: var(--muted); }
+.rm-topics { display: flex; flex-wrap: wrap; gap: 4px 10px; margin-top: 6px; font: 500 11.5px var(--mono); color: var(--faint); }
+.rm-left .rm-topics { justify-content: flex-end; }
+
+@media (max-width: 980px) {
+  .hero { grid-template-columns: 1fr; }
+  .roadmap::before { left: 22px; }
+  .rm-root { align-self: flex-start; padding: 12px 20px; font-size: 16px; }
+  .rm-band { padding: 18px 16px 20px 44px; }
+  .rm-nodes { grid-template-columns: 1fr; }
+  .rm-left, .rm-right { grid-column: 1; flex-direction: column; text-align: left; gap: 8px; }
+  .rm-node::before { left: -22px; right: auto; width: 20px; }
+  .rm-left .rm-node-body { border-right: 0; padding-right: 0; border-left: 2.5px solid var(--accent); padding-left: 12px; }
+  .rm-left .rm-lessons { align-items: flex-start; }
+  .rm-left .rm-lesson { flex-direction: row; }
+  .rm-left .rm-topics { justify-content: flex-start; }
+}

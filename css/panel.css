@@ -1,0 +1,44 @@
+/* Right lesson panel: tabs, prose, key points, code blocks, challenges, links. */
+.lesson-panel { position: sticky; top: 76px; background: var(--card); border: 1.5px solid var(--line-soft); border-radius: 18px; box-shadow: var(--shadow); display: flex; flex-direction: column; max-height: calc(100vh - 96px); }
+.tabs { display: flex; gap: 4px; padding: 8px; border-bottom: 1px solid var(--line-soft); }
+.tab { flex: 1; border: 0; background: transparent; font: 600 14px var(--cond); color: var(--muted); padding: 8px 6px; border-radius: 9px; cursor: pointer; }
+.tab:hover { color: var(--navy); background: #f3e9da; }
+.tab[aria-selected=true] { background: var(--navy); color: #fff; }
+.tab-panel { padding: 16px 18px; overflow-y: auto; flex: 1; scrollbar-width: thin; }
+.panel-foot { padding: 12px 16px; border-top: 1px solid var(--line-soft); }
+.btn-done { width: 100%; }
+.btn-done.is-done { background: var(--accent); border-color: var(--accent); color: #fff; box-shadow: 0 2px 0 color-mix(in srgb, var(--accent) 60%, #000); }
+
+.prose { font-size: 15.5px; }
+.prose p { margin: 0 0 12px; }
+.prose ul { padding-left: 20px; margin: 0 0 12px; }
+.prose li { margin-bottom: 5px; }
+.prose b, .prose strong { color: var(--navy); }
+.prose h3, .panel-h { font-size: 18px; margin: 18px 0 8px; }
+.prose .callout { border-left: 3px solid var(--accent); background: var(--paper); padding: 9px 12px; border-radius: 0 10px 10px 0; margin: 0 0 12px; }
+.key-points { list-style: none; padding: 0; margin: 0 0 14px; display: flex; flex-direction: column; gap: 8px; }
+.key-points li { display: flex; gap: 10px; background: var(--paper); border: 1px solid var(--line-soft); border-radius: 11px; padding: 9px 11px; font-size: 14.5px; }
+.kp-num { flex: none; width: 22px; height: 22px; border-radius: 7px; background: var(--accent); color: #fff; font: 600 12px var(--mono); display: grid; place-items: center; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.chip { font: 500 11.5px var(--mono); color: var(--navy); border: 1.5px solid color-mix(in srgb, var(--accent) 55%, transparent); border-radius: 7px; padding: 2px 8px; background: var(--paper); }
+
+.code-block { margin: 0 0 16px; border-radius: 12px; overflow: hidden; border: 1.5px solid var(--line-soft); background: #fbf5ea; }
+.code-block figcaption { display: flex; align-items: center; gap: 8px; font: 500 12px var(--mono); color: var(--muted); padding: 7px 12px; background: #f1e6d4; }
+.file-dot { width: 8px; height: 8px; border-radius: 2px; background: #8a73e0; }
+.code-block pre { margin: 0; padding: 12px 14px; overflow-x: auto; font: 12.5px/1.6 var(--mono); color: #3b4150; tab-size: 4; }
+.code-block code { background: none; padding: 0; font: inherit; color: inherit; }
+.code-note { margin: 0; padding: 8px 12px 10px; font-size: 13.5px; color: var(--muted); border-top: 1px dashed var(--line-soft); }
+.tk-kw { color: #2a56a3; font-weight: 600; } .tk-type { color: #1a8a88; } .tk-fn { color: #c0652d; }
+.tk-str { color: #a0522d; } .tk-num { color: #b04aa0; } .tk-com { color: #a49884; font-style: italic; } .tk-attr { color: #8a73e0; }
+
+.try-list { list-style: none; padding: 0; margin: 10px 0 0; display: flex; flex-direction: column; gap: 8px; }
+.try-list label { display: flex; gap: 10px; align-items: flex-start; cursor: pointer; background: var(--paper); border: 1px solid var(--line-soft); border-radius: 11px; padding: 10px 12px; font-size: 14.5px; }
+.try-list input { accent-color: var(--accent); width: 17px; height: 17px; margin-top: 2px; flex: none; }
+.try-list input:checked + span { color: var(--faint); text-decoration: line-through; }
+.link-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+.link-list a { display: block; text-decoration: none; padding: 9px 12px; border-radius: 10px; background: var(--paper); border: 1px solid var(--line-soft); color: var(--navy); font-weight: 500; }
+.link-list a:hover { border-color: var(--accent); }
+
+@media (max-width: 1180px) {
+  .lesson-panel { position: static; max-height: none; }
+}

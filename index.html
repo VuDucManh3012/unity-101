@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="vi" class="is-loading">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Unity 101 · Lộ trình Unity Developer</title>
+  <meta name="description" content="Khóa học Unity tương tác theo Unity Developer Roadmap: mỗi bài là một mô phỏng chạy ngay trên trình duyệt." />
+  <meta name="theme-color" content="#f6eddd" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2318213d'/%3E%3Cpath d='M16 6 25 11v10l-9 5-9-5V11z' fill='none' stroke='%23f6eddd' stroke-width='2'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Barlow+Semi+Condensed:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/sidebar.css" />
+  <link rel="stylesheet" href="css/lesson.css" />
+  <link rel="stylesheet" href="css/panel.css" />
+  <link rel="stylesheet" href="css/roadmap.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar" id="sidebar" aria-label="Danh sách bài học"></aside>
+    <div class="scrim" id="scrim"></div>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="icon-btn menu-btn" id="btn-menu" type="button" aria-label="Mở menu">☰</button>
+        <span class="crumb" id="crumb"></span>
+        <span class="clock"><span id="clock-date"></span><b id="clock-time"></b></span>
+      </header>
+
+      <section id="view-home" class="view-home"></section>
+
+      <section id="view-lesson" class="view-lesson" hidden>
+        <div class="lesson-head">
+          <p class="eyebrow" id="lesson-eyebrow"></p>
+          <h1 id="lesson-title"></h1>
+          <p class="lead" id="lesson-lead"></p>
+        </div>
+
+        <div class="lesson-body">
+          <div class="workbench">
+            <div class="scene-card">
+              <div class="scene-toolbar">
+                <span class="scene-tab is-active">#  Scene</span>
+                <span class="scene-tab">Game</span>
+                <span class="spacer"></span>
+                <button class="icon-btn play-btn" id="btn-play" type="button" aria-label="Tạm dừng"><svg class="i-pause" viewBox="0 0 12 12" width="12" height="12"><rect x="2" y="1.5" width="2.6" height="9" rx="1" fill="currentColor"/><rect x="7.4" y="1.5" width="2.6" height="9" rx="1" fill="currentColor"/></svg><svg class="i-play" viewBox="0 0 12 12" width="12" height="12"><path d="M3 1.5v9l7.5-4.5z" fill="currentColor"/></svg></button>
+                <button class="icon-btn" id="btn-reset" type="button" aria-label="Chạy lại" title="Chạy lại mô phỏng">↺</button>
+              </div>
+              <div class="scene-canvas-wrap">
+                <canvas id="scene-canvas"></canvas>
+              </div>
+              <div class="scene-hint" id="scene-hint" hidden></div>
+            </div>
+            <div class="bench-bottom">
+              <div class="card inspector-card">
+                <div class="card-title"><span class="ico">ⓘ</span>Inspector</div>
+                <div id="inspector" class="inspector"></div>
+              </div>
+              <div class="card console-card">
+                <div class="card-title"><span class="ico">▤</span>Console<button class="link-btn" id="btn-clear-log" type="button">Clear</button></div>
+                <div id="console" class="console" aria-live="polite"></div>
+              </div>
+            </div>
+          </div>
+
+          <aside class="lesson-panel">
+            <div class="tabs" role="tablist">
+              <button class="tab" role="tab" data-tab="overview">Tổng quan</button>
+              <button class="tab" role="tab" data-tab="code">Code C#</button>
+              <button class="tab" role="tab" data-tab="try">Thử thách</button>
+              <button class="tab" role="tab" data-tab="links">Tài liệu</button>
+            </div>
+            <div class="tab-panel" id="tab-overview"></div>
+            <div class="tab-panel" id="tab-code" hidden></div>
+            <div class="tab-panel" id="tab-try" hidden></div>
+            <div class="tab-panel" id="tab-links" hidden></div>
+            <div class="panel-foot">
+              <button class="btn btn-done" id="btn-done" type="button">Đánh dấu hoàn thành</button>
+            </div>
+          </aside>
+        </div>
+
+        <nav class="lesson-nav">
+          <a id="lesson-prev" class="btn btn-ghost" href="#/"></a>
+          <a id="lesson-next" class="btn btn-primary" href="#/"></a>
+        </nav>
+      </section>
+    </main>
+  </div>
+
+  <noscript><p style="padding:24px">Bật JavaScript để dùng các mô phỏng.</p></noscript>
+  <script src="js/core/manifest.js"></script>
+  <script src="js/core/draw-helpers.js"></script>
+  <script src="js/core/inspector-controls.js"></script>
+  <script src="js/core/stage.js"></script>
+  <script src="js/core/csharp-highlighter.js"></script>
+  <script src="js/core/lesson-loader-and-progress.js"></script>
+  <script src="js/core/sidebar.js"></script>
+  <script src="js/core/roadmap-view.js"></script>
+  <script src="js/core/lesson-view.js"></script>
+  <script src="js/core/app.js"></script>
+</body>
+</html>
